@@ -126,13 +126,20 @@ namespace SlimUI.ModernMenu{
 		public void ClosePauseMenu()
 		{
             mainMenu.SetActive(false);
+            
+            // Find the player and toggle pause state
+            var player = FindObjectOfType<PlayerMovement>();
+            if (player != null && player.isPaused)
+            {
+                player.TogglePause();
+            }
 		}
         public void OpenPauseMenu()
         {
             mainMenu.SetActive(true);
         }
 
-        public void PlayCampaignMobile(){
+		public void PlayCampaignMobile(){
 			exitMenu.SetActive(false);
 			if(extrasMenu) extrasMenu.SetActive(false);
 			mainMenu.SetActive(false);
