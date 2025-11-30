@@ -11,7 +11,9 @@ The game implements a specific control scheme to handle platforming and combat s
 | **Move Left/Right** | `A` / `D` or `Arrow Left/Right`  | (Preferred input: `A` / `D`) |
 | **Climb Ladder** | `W` / `S` or `Arrow Up/Down` | (Preferred input: `W` / `S`) |
 | **Jump** | `Space` | |
+| **Run** | `LShift` | |
 | **Shoot** | `Left Mouse Button` | |
+
 
 ## ⚙️ Game Mechanics & Physics
 
