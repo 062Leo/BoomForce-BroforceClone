@@ -2,17 +2,9 @@
 
 A recreation of *Broforce*, developed as a project for the Game Engines course of my Software Engineering Bachelor studies. Built in Unity, the project emphasizes destructible environments, complex chain reactions, and physics-based object interactions, replicating the core gameplay mechanics of the original game.
 
-## ⚠️ Current Status & Installation
+## 🎮 Controls & Input
 
-**Please Note:** The project currently cannot be built into a standalone executable.
-To play the game, you must run it inside the **Unity Editor**.
-
-1. Clone this repository.
-2. Open the project via Unity Hub.
-3. Open the main scene.
-4. Press the **Play** button in the Editor.
-
-## 🎮 Controls
+The game implements a specific control scheme to handle platforming and combat simultaneously.
 
 | Action | Input | Notes |
 | :--- | :--- | :--- |
