@@ -8,9 +8,10 @@ The game implements a specific control scheme to handle platforming and combat s
 
 | Action | Input | Notes |
 | :--- | :--- | :--- |
-| **Move Left/Right** | `A` / `D` or `Arrow Keys` | |
-| **Climb Ladder** | `W` / `S` | (Preferred over Arrow Keys for smoother input) |
-| **Shoot** | `Left Mouse Button` / `Touchpad` | |
+| **Move Left/Right** | `A` / `D` or `Arrow Left/Right`  | (Preferred input: `A` / `D`) |
+| **Climb Ladder** | `W` / `S` or `Arrow Up/Down` | (Preferred input: `W` / `S`) |
+| **Jump** | `Space` | |
+| **Shoot** | `Left Mouse Button` | |
 
 ## ⚙️ Game Mechanics & Physics
 
