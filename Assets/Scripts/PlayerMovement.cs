@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private UDMapManager udMapManager;
+    public GameObject mainMenu;
 
     public float runSpeed = 40f;
     public float climbspeed = 40f;
@@ -16,39 +18,94 @@ public class PlayerMovement : MonoBehaviour
     public bool jump = false;
     private bool onLadder;
     private bool onLadderTop;
-
+    [HideInInspector] public bool isPaused = false;
+    private Vector2 savedVelocity;
+    private float savedAngularVelocity;
+    private bool wasKinematic;
+    
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        mainMenu.SetActive(isPaused);
+        
+        if (isPaused)
+        {
+            // Save current physics state
+            savedVelocity = rb.linearVelocity;
+            savedAngularVelocity = rb.angularVelocity;
+            wasKinematic = rb.isKinematic;
+            
+            // Freeze the character
+            rb.isKinematic = true;
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            
+            // Optional: Pause audio
+            AudioListener.pause = true;
+        }
+        else
+        {
+            // Unfreeze the character
+            rb.isKinematic = wasKinematic;
+            rb.linearVelocity = savedVelocity;
+            rb.angularVelocity = savedAngularVelocity;
+            
+            // Optional: Resume audio
+            AudioListener.pause = false;
+        }
+    }
     private void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         udMapManager = FindObjectOfType<UDMapManager>();
     }
+
+
+
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-        animator.SetFloat("xVelocity", Math.Abs(rb.linearVelocity.x));
-        if (Input.GetButtonDown("Jump") && !onLadder || Input.GetButtonDown("Jump") && onLadderTop)
+        // Toggle pause menu with Escape key
+        if (SceneManager.GetActiveScene().name == "Game" && Input.GetKeyDown(KeyCode.Escape))
         {
-            jump = true;
+            TogglePause();
         }
-        if (onLadderTop)
-        {
 
-            if (Input.GetKey(KeyCode.S))
+        // Only process input if not paused
+        if (!isPaused)
+        {
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+            animator.SetFloat("xVelocity", Math.Abs(rb.linearVelocity.x));
+            if ((Input.GetButtonDown("Jump") && !onLadder) || (Input.GetButtonDown("Jump") && onLadderTop))
             {
-                verticalMove = -1 * climbspeed; // Bewegung nach unten
+                jump = true;
             }
-            else { verticalMove = 0; }
+            
+            if (onLadderTop)
+            {
+                verticalMove = Input.GetKey(KeyCode.S) ? -1 * climbspeed : 0f;
+            }
+            else
+            {
+                verticalMove = Input.GetAxisRaw("Vertical") * climbspeed;
+            }
         }
         else
         {
-            verticalMove = Input.GetAxisRaw("Vertical") * climbspeed;
+            // Reset movement when paused
+            horizontalMove = 0f;
+            verticalMove = 0f;
+            jump = false;
         }
 
     }
     void FixedUpdate()
     {
+        // Skip physics if game is paused
+        if (isPaused)
+            return;
+            
         // Move our character
         CheckIfOnLadder();
 
