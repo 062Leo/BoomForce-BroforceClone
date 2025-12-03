@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private UDMapManager udMapManager;
     public GameObject mainMenu;
+    public GameObject howToPlay;
+    public GameObject exitCanvas;
 
     public float runSpeed = 40f;
     public float climbspeed = 40f;
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         isPaused = !isPaused;
         mainMenu.SetActive(isPaused);
         
+
         if (isPaused)
         {
             // Save current physics state
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            howToPlay.SetActive(false);
+            exitCanvas.SetActive(false);
             // Unfreeze the character
             rb.isKinematic = wasKinematic;
             rb.linearVelocity = savedVelocity;
@@ -66,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Toggle pause menu with Escape key
-        if (SceneManager.GetActiveScene().name == "Game" && Input.GetKeyDown(KeyCode.Escape))
+        if (SceneManager.GetActiveScene().name == "Game" && Input.GetKeyDown(KeyCode.Tab))
         {
             TogglePause();
         }
