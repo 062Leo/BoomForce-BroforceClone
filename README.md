@@ -85,7 +85,6 @@ Eine Nachbildung von *BroForce*, entwickelt als Projekt für den Game Engines-Ku
    - Implementierung präziser Zeitsteuerung für Explosionssequenzen
    - Entwicklung effizienter Mechanismen zur Objektzerstörung und -bereinigung
 
-## Danksagungen
 
 ### Externe Assets
 - **Grafiken**:
@@ -213,8 +212,6 @@ A recreation of *Broforce*, developed as a project for the Game Engines course o
    - Developed efficient object destruction and cleanup mechanisms
 
 
-
-## Credits
 
 ### External Assets
 - **Visuals**:
