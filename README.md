@@ -11,11 +11,12 @@ Eine Nachbildung von *BroForce*, entwickelt als Projekt für den Game Engines-Ku
 - **Genre**: 2D-Physikbasiertes Puzzle/Plattformspiel
 
 ## Steuerung
-- **Bewegung**: 
-  - Links/Rechts: `A/D` (empfohlen) oder `Pfeiltasten`
-  - Leitern klettern: `W/S` (empfohlen) oder `Pfeiltasten Hoch/Runter`
-  - Schießen: `Linke Maustaste`
-  - Springen: `Leertaste`
+
+- Links/Rechts: `A/D` (empfohlen) oder `Pfeiltasten`
+- Leitern klettern: `W/S` (empfohlen) oder `Pfeiltasten Hoch/Runter`
+- Schießen: `Linke Maustaste`
+- Springen: `Leertaste`
+- Menü öffnen: `Tab`
 
 ## Spielmechaniken
 
